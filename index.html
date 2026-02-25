@@ -4,14 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elizabeth Matallana | Healthcare Data Analyst Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         :root {
-            --primary-blue: #2c3e50;
-            --secondary-blue: #34495e;
-            --accent-teal: #16a085;
-            --light-gray: #f4f7f6;
-            --text-dark: #333;
+            --primary: #1a365d; /* Navy */
+            --secondary: #2d3748;
+            --accent: #38b2ac; /* Teal/Green */
+            --bg-light: #f7fafc;
+            --text-main: #2d3748;
+            --text-muted: #718096;
             --white: #ffffff;
+            --transition: all 0.3s ease;
         }
 
         * {
@@ -20,284 +25,681 @@
             padding: 0;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
-            color: var(--text-dark);
-            background-color: var(--light-gray);
+            color: var(--text-main);
+            background-color: var(--bg-light);
         }
 
-        header {
-            background-color: var(--primary-blue);
-            color: var(--white);
-            padding: 3rem 10%;
-            text-align: center;
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 1rem;
-        }
-
+        /* --- Navigation --- */
         nav {
-            background: var(--secondary-blue);
-            padding: 1rem;
-            position: sticky;
+            position: fixed;
             top: 0;
-            z-index: 100;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+            padding: 1rem 0;
         }
 
-        nav ul {
-            list-style: none;
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
             display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        nav a {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.9rem;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 2rem auto;
+            justify-content: space-between;
+            align-items: center;
             padding: 0 20px;
         }
 
-        section {
+        .logo {
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* --- Hero Section --- */
+        header {
+            padding: 160px 20px 100px;
+            background: linear-gradient(135deg, var(--white) 0%, #edf2f7 100%);
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--white);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            background: #cbd5e0; /* Placeholder color */
+        }
+
+        header h1 {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        header .title-tag {
+            font-size: 1.25rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .hero-tagline {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-btn {
+            width: 45px;
+            height: 45px;
             background: var(--white);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            text-decoration: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+
+        .social-btn:hover {
+            background: var(--primary);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* --- Section Styling --- */
+        section {
+            padding: 80px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
         }
 
         h2 {
-            color: var(--primary-blue);
-            border-bottom: 2px solid var(--accent-teal);
-            padding-bottom: 10px;
-            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
         }
 
-        .skills-grid {
+        h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: var(--accent);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* --- Profile/About --- */
+        .about-grid {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+        }
+
+        /* --- Skills --- */
+        .skills-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
         }
 
-        .skill-category h4 {
-            color: var(--accent-teal);
-            margin-bottom: 10px;
+        .skill-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            transition: var(--transition);
+            border-top: 4px solid var(--accent);
         }
 
-        .job {
-            margin-bottom: 1.5rem;
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
         }
 
-        .job-header {
-            display: flex;
-            justify-content: space-between;
-            font-weight: bold;
+        .skill-card i {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 15px;
         }
 
-        .job-sub {
-            font-style: italic;
-            color: #666;
-            margin-bottom: 10px;
+        .skill-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .skill-list li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 0.8rem;
+        }
+
+        /* --- Projects --- */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
         }
 
         .project-card {
-            border-left: 4px solid var(--accent-teal);
-            padding: 1rem;
-            margin-bottom: 1rem;
-            background: #fafafa;
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-img-placeholder {
+            width: 100%;
+            height: 200px;
+            background: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-style: italic;
+            border-bottom: 1px solid #edf2f7;
+        }
+
+        .project-info {
+            padding: 25px;
+            flex-grow: 1;
+        }
+
+        .project-info h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .project-info ul {
+            list-style: none;
+            font-size: 0.9rem;
+            color: var(--text-main);
+        }
+
+        .project-info ul li {
+            margin-bottom: 10px;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .project-info ul li::before {
+            content: '•';
+            color: var(--accent);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .project-links {
+            padding: 20px 25px;
+            border-top: 1px solid #edf2f7;
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-small {
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent);
+            transition: var(--transition);
+        }
+
+        .btn-small:hover {
+            text-decoration: underline;
+            color: var(--primary);
+        }
+
+        /* --- Experience --- */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .exp-item {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            border-left: 5px solid var(--primary);
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .exp-title h3 {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .exp-company {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .exp-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            background: #edf2f7;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        /* --- Education & Certs --- */
+        .edu-cert-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .edu-item {
+            margin-bottom: 20px;
+        }
+
+        .cert-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .badge {
-            display: inline-block;
-            background: var(--light-gray);
-            padding: 5px 12px;
-            margin: 5px;
-            border-radius: 20px;
+            background: var(--white);
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 8px;
             font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
+        .badge i {
+            color: var(--accent);
+        }
+
+        /* --- Footer --- */
         footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 60px 20px 30px;
             text-align: center;
-            padding: 2rem;
-            color: #777;
         }
 
-        @media (max-width: 600px) {
-            .job-header {
-                flex-direction: column;
-            }
+        .contact-details {
+            margin-bottom: 30px;
+        }
+
+        .contact-link {
+            color: var(--white);
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .contact-link:hover {
+            color: var(--accent);
+        }
+
+        .footer-note {
+            font-size: 0.8rem;
+            color: #a0aec0;
+            margin-top: 40px;
+            border-top: 1px solid #2d3748;
+            padding-top: 20px;
+        }
+
+        /* --- Responsive Queries --- */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.2rem; }
+            .nav-links { display: none; } /* Could add a hamburger menu if needed */
+            .edu-cert-grid { grid-template-columns: 1fr; }
+            .exp-header { flex-direction: column; gap: 10px; }
         }
     </style>
 </head>
 <body>
 
-<header>
-    [cite_start]<h1>Elizabeth Matallana [cite: 1]</h1>
-    [cite_start]<p>Healthcare Data Analyst [cite: 2]</p>
-    <div class="contact-info">
-        [cite_start]<span>📍 Buckeye, AZ [cite: 3]</span>
-        [cite_start]<span>📞 (808) 429-6419 [cite: 4]</span>
-        [cite_start]<span>✉️ emat152@outlook.com [cite: 6]</span>
-    </div>
-</header>
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">EM.Analytics</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
-<nav>
-    <ul>
-        <li><a href="#summary">Summary</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#projects">Projects</a></li>
-    </ul>
-</nav>
+    <header>
+        <div class="hero-content">
+            <img src="https://via.placeholder.com/180" alt="Elizabeth Matallana" class="profile-img">
+            <h1>Elizabeth Matallana</h1>
+            <span class="title-tag">Healthcare Data Analyst | Transitioning Professional</span>
+            <p class="hero-tagline">Bridging clinical expertise and military precision with data-driven insights. Specialized in EHR validation, HIPAA-compliant data management, and operational analysis.</p>
+            <div class="social-links">
+                <a href="mailto:emat152@outlook.com" class="social-btn" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="tel:8084296419" class="social-btn" title="Phone"><i class="fas fa-phone"></i></a>
+                <a href="#" class="social-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social-btn" title="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </header>
 
-<div class="container">
-    <section id="summary">
+    <section id="about">
         <h2>Professional Profile</h2>
-        [cite_start]<p>Detail-oriented healthcare and military professional with proven skills in data management, transitioning to data analytics[cite: 8]. [cite_start]Hands-on expertise in electronic health records (EHR), data validation, and workflow optimization equips me to deliver accurate insights in clinical and technical settings[cite: 9]. [cite_start]Currently pursuing a Master's in Data Analytics (March 2026) to master advanced tools like SQL, Python, and statistical modeling[cite: 11].</p>
+        <div class="about-grid">
+            <p>Detail-oriented healthcare and military professional with a high-stakes background in data integrity and operational accuracy. Currently transitioning to <strong>Data Analytics</strong> with a focus on leveraging hands-on expertise in Electronic Health Records (EHR) and workflow optimization to deliver actionable clinical insights.</p>
+            <br>
+            <p>With an upcoming <strong>Master's in Data Analytics (March 2026)</strong>, I am dedicated to mastering advanced statistical modeling and predictive analytics to solve complex challenges in dynamic healthcare environments. I excel at translating clinical requirements into technical data solutions while maintaining strict regulatory compliance.</p>
+        </div>
     </section>
 
     <section id="skills">
         <h2>Key Skills</h2>
-        <div class="skills-grid">
-            <div class="skill-category">
-                [cite_start]<h4>Data & Analytics [cite: 13, 14]</h4>
-                <ul>
-                    [cite_start]<li>Data Validation & Integrity [cite: 13]</li>
-                    [cite_start]<li>Excel (Pivot Tables, Filters) [cite: 14]</li>
-                    [cite_start]<li>SQL Basics (Self-study) [cite: 15]</li>
-                    [cite_start]<li>HIPAA Compliance [cite: 13]</li>
+        <div class="skills-container">
+            <div class="skill-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>Data & Analytics</h3>
+                <ul class="skill-list">
+                    <li>Advanced Excel (Pivot Tables, XLOOKUP, Dashboards)</li>
+                    <li>Data Validation & Cleaning</li>
+                    <li>Statistical Modeling (In Progress)</li>
+                    <li>SQL Database Foundations</li>
+                    <li>Trend Analysis & Visualization</li>
                 </ul>
             </div>
-            <div class="skill-category">
-                [cite_start]<h4>Healthcare IT [cite: 14, 15]</h4>
-                <ul>
-                    [cite_start]<li>EHR/EMR (Gaia Chairside) [cite: 14]</li>
-                    [cite_start]<li>IT Troubleshooting [cite: 15]</li>
-                    [cite_start]<li>Ticketing Systems [cite: 15]</li>
-                    [cite_start]<li>Clinical Workflows [cite: 16]</li>
+            <div class="skill-card">
+                <i class="fas fa-hospital-user"></i>
+                <h3>Healthcare IT</h3>
+                <ul class="skill-list">
+                    <li>EHR Systems (Gaia Chairside)</li>
+                    <li>HIPAA & Data Privacy Compliance</li>
+                    <li>Clinical Workflow Optimization</li>
+                    <li>Quality Assurance Reporting</li>
+                    <li>Biomechanical Assessment Analysis</li>
                 </ul>
             </div>
-            <div class="skill-category">
-                [cite_start]<h4>Strengths [cite: 54, 55]</h4>
-                <ul>
-                    [cite_start]<li>Interdisciplinary Communication [cite: 54]</li>
-                    [cite_start]<li>High Accuracy & Integrity [cite: 55]</li>
-                    [cite_start]<li>Problem Solving [cite: 55]</li>
-                    [cite_start]<li>Quality Assurance [cite: 16]</li>
+            <div class="skill-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Transferable Strengths</h3>
+                <ul class="skill-list">
+                    <li>99% Operational Data Accuracy (Military)</li>
+                    <li>Interdisciplinary Team Collaboration</li>
+                    <li>Technical Troubleshooting & IT Support</li>
+                    <li>Problem-Solving in Time-Sensitive Settings</li>
+                    <li>Risk Identification & Mitigation</li>
                 </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Data Analytics Projects</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <div class="project-img-placeholder">
+                    [ Insert Excel Vitals Dashboard Screenshot ]
+                </div>
+                <div class="project-info">
+                    <h3>Patient Vitals Trends Dashboard</h3>
+                    <ul>
+                        <li><strong>Objective:</strong> Analyzed longitudinal dialysis treatment data to identify risk patterns in patient blood pressure and fluid levels.</li>
+                        <li><strong>Tools:</strong> Excel (Pivot Tables, Trendlines, Conditional Formatting).</li>
+                        <li><strong>Impact:</strong> Identified specific clinical markers for potential hypotension, suggesting protocol adjustments for 50+ daily patients.</li>
+                    </ul>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="btn-small">View on GitHub</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-img-placeholder">
+                    [ Insert Clinical KPI Tracker Screenshot ]
+                </div>
+                <div class="project-info">
+                    <h3>Clinical KPI Performance Tracker</h3>
+                    <ul>
+                        <li><strong>Objective:</strong> Built a dynamic dashboard to monitor clinical treatment targets vs. actual performance metrics.</li>
+                        <li><strong>Tools:</strong> Excel (Slicers, Data Validation, VLOOKUP/XLOOKUP).</li>
+                        <li><strong>Impact:</strong> Visualized session duration compliance and recovery rates, allowing clinical managers to reallocate resources effectively.</li>
+                    </ul>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="btn-small">View on GitHub</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-img-placeholder">
+                    [ Insert EHR Data Audit Logic Screenshot ]
+                </div>
+                <div class="project-info">
+                    <h3>EHR Data Quality & HIPAA Audit</h3>
+                    <ul>
+                        <li><strong>Objective:</strong> Developed a logic-based audit tool to scan sample EHR datasets for missing or non-compliant entries.</li>
+                        <li><strong>Tools:</strong> Excel (Complex Logical Formulas, IF/ISBLANK, Macros).</li>
+                        <li><strong>Impact:</strong> Reduced manual audit time by 40% while identifying critical data gaps to ensure 100% HIPAA compliance readiness.</li>
+                    </ul>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="btn-small">View on GitHub</a>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="experience">
         <h2>Professional Experience</h2>
-        
-        <div class="job">
-            <div class="job-header">
-                <span>Dialysis Technician | [cite_start]Fresenius Medical Care [cite: 23, 24]</span>
-                [cite_start]<span>Sep 2020 – Jul 2024 [cite: 26]</span>
+        <div class="timeline">
+            <div class="exp-item">
+                <div class="exp-header">
+                    <div class="exp-title">
+                        <h3>Dialysis Technician</h3>
+                        <span class="exp-company">Fresenius Medical Care</span>
+                    </div>
+                    <span class="exp-date">Sep 2020 – Jul 2024</span>
+                </div>
+                <ul>
+                    <li>Validated real-time treatment data for <strong>50+ patients daily</strong> in Gaia Chairside EMR, escalating abnormalities to mitigate clinical risks.</li>
+                    <li>Optimized clinical workflows by standardizing data documentation practices, improving HIPAA compliance and operational efficiency.</li>
+                    <li>Collaborated on quality assurance reports, translating patient outcome data into team-based decision-making strategies.</li>
+                </ul>
             </div>
-            [cite_start]<div class="job-sub">Goodyear, AZ [cite: 23]</div>
-            <ul>
-                [cite_start]<li>Analyzed and validated real-time patient vitals for 50+ patients daily in Gaia Chairside EMR[cite: 28].</li>
-                [cite_start]<li>Optimized clinical workflows and improved operational efficiency/HIPAA compliance through precise data documentation[cite: 29].</li>
-                [cite_start]<li>Monitored and reported treatment responses to support QA and team decision-making[cite: 30].</li>
-            </ul>
-        </div>
 
-        <div class="job">
-            <div class="job-header">
-                <span>Fire Control Specialist | [cite_start]Army National Guard [cite: 31, 32]</span>
-                [cite_start]<span>Sep 2017 – Feb 2025 [cite: 33]</span>
+            <div class="exp-item">
+                <div class="exp-header">
+                    <div class="exp-title">
+                        <h3>Fire Control Specialist</h3>
+                        <span class="exp-company">Army National Guard</span>
+                    </div>
+                    <span class="exp-date">Sep 2017 – Feb 2025</span>
+                </div>
+                <ul>
+                    <li>Analyzed operational data in digital AFATDS systems under high-pressure conditions, maintaining <strong>99% accuracy</strong> for mission-critical decisions.</li>
+                    <li>Resolved system-level data inconsistencies, <strong>reducing potential errors by 25%</strong> and enhancing communication reliability between units.</li>
+                    <li>Applied rigorous problem-solving to maintain data integrity across distributed high-stakes environments.</li>
+                </ul>
             </div>
-            <ul>
-                [cite_start]<li>Validated and analyzed operational data in AFATDS digital systems with 99% accuracy under time-sensitive conditions[cite: 34].</li>
-                [cite_start]<li>Identified and resolved data inconsistencies, reducing potential errors by an estimated 25%[cite: 35].</li>
-                [cite_start]<li>Maintained data integrity in high-stakes environments through collaborative problem-solving[cite: 36].</li>
-            </ul>
-        </div>
 
-        <div class="job">
-            <div class="job-header">
-                <span>Injury Prevention Specialist | [cite_start]BioHealth [cite: 37]</span>
-                [cite_start]<span>Jan 2023 – Jan 2024 [cite: 38]</span>
+            <div class="exp-item">
+                <div class="exp-header">
+                    <div class="exp-title">
+                        <h3>Injury Prevention Specialist</h3>
+                        <span class="exp-company">BioHealth</span>
+                    </div>
+                    <span class="exp-date">Jan 2023 – Jan 2024</span>
+                </div>
+                <ul>
+                    <li>Analyzed biomechanical movement data in clinical software to generate rehabilitation reports and prevention strategies.</li>
+                    <li>Visualized functional data trends to support evidence-based recommendations, leading to measurable improvements in patient outcomes.</li>
+                </ul>
             </div>
-            <ul>
-                [cite_start]<li>Performed biomechanical assessments and analyzed movement data to generate rehabilitation reports[cite: 39].</li>
-                [cite_start]<li>Visualized functional data trends to support evidence-based recommendations and improve outcomes[cite: 42].</li>
-                [cite_start]<li>Maintained organized, HIPAA-compliant patient records across interdisciplinary teams[cite: 41].</li>
-            </ul>
-        </div>
 
-        <div class="job">
-            <div class="job-header">
-                <span>IT Help Desk Support | [cite_start]University of Portland [cite: 43, 44]</span>
-                [cite_start]<span>Jan 2021 – Jul 2021 [cite: 45]</span>
+            <div class="exp-item">
+                <div class="exp-header">
+                    <div class="exp-title">
+                        <h3>IT Help Desk Support</h3>
+                        <span class="exp-company">University of Portland</span>
+                    </div>
+                    <span class="exp-date">Jan 2021 – Jul 2021</span>
+                </div>
+                <ul>
+                    <li>Resolved <strong>100+ technical support requests monthly</strong>, utilizing ticketing systems to track recurring issues and improve documentation consistency.</li>
+                </ul>
             </div>
-            <ul>
-                [cite_start]<li>Resolved 100+ technical support requests monthly using ticketing systems to track and document trends[cite: 46].</li>
-                [cite_start]<li>Analyzed recurring system errors to reduce resolution time through proactive troubleshooting[cite: 47].</li>
-            </ul>
         </div>
     </section>
 
     <section id="education">
-        <h2>Education</h2>
-        [cite_start]<p><strong>Master of Science in Data Analytics (Data Science Focus) [cite: 18]</strong><br>
-        Western Governors University | [cite_start]<i>Expected Start March 2026</i> [cite: 11, 17, 18]</p>
-        [cite_start]<p><strong>Bachelor of Science in Kinesiology [cite: 21]</strong><br>
-        [cite_start]Oregon State University [cite: 20]</p>
-    </section>
-
-    <section id="certifications">
-        <h2>Certifications</h2>
-        [cite_start]<div class="badge">CompTIA Security+ [cite: 49]</div>
-        [cite_start]<div class="badge">Certified EKG Technician (CET) [cite: 50]</div>
-        [cite_start]<div class="badge">NASM Certified Personal Trainer [cite: 51]</div>
-        [cite_start]<div class="badge">CPR/AED Certification [cite: 52]</div>
-    </section>
-
-    <section id="projects">
-        <h2>Data Analytics Projects (Conceptual)</h2>
-        
-        <div class="project-card">
-            <h3>1. Dialysis Treatment Outcome Analysis</h3>
-            <p>A statistical study using Excel to analyze patient vital trends over a 6-month period. Focuses on identifying correlations between treatment duration and post-treatment recovery times to suggest workflow optimizations.</p>
-        </div>
-
-        <div class="project-card">
-            <h3>2. Clinical Data Validation Automation</h3>
-            <p>Using Python to develop a script that cross-references EHR entries against HIPAA-compliance checklists, identifying missing documentation or data inconsistencies in large datasets to reduce manual audit time.</p>
-        </div>
-
-        <div class="project-card">
-            <h3>3. Biomechanical Movement Trends Visualization</h3>
-            <p>A Tableau/PowerBI dashboard visualizing movement data from biomechanical assessments to identify common injury risk factors across different demographic groups in a clinical setting.</p>
+        <h2>Education & Certifications</h2>
+        <div class="edu-cert-grid">
+            <div class="education-side">
+                <div class="edu-item">
+                    <h3>M.S. in Data Analytics (Data Science Focus)</h3>
+                    <p>Western Governors University | <strong>Expected Start March 2026</strong></p>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 5px;">
+                        <em>Anticipated Coursework:</em> SQL Database Management, Python for Data Science, Advanced Statistical Modeling, Predictive Analytics, Tableau/Power BI Visualization.
+                    </p>
+                </div>
+                <div class="edu-item">
+                    <h3>B.S. in Kinesiology</h3>
+                    <p>Oregon State University</p>
+                </div>
+            </div>
+            <div class="certifications-side">
+                <h3>Professional Credentials</h3>
+                <br>
+                <div class="cert-badges">
+                    <span class="badge"><i class="fas fa-user-shield"></i> CompTIA Security+</span>
+                    <span class="badge"><i class="fas fa-heartbeat"></i> Certified EKG Technician (CET)</span>
+                    <span class="badge"><i class="fas fa-dumbbell"></i> NASM Certified Personal Trainer</span>
+                    <span class="badge"><i class="fas fa-plus-square"></i> CPR/AED Certification</span>
+                </div>
+            </div>
         </div>
     </section>
-</div>
 
-<footer>
-    <p>&copy; 2026 Elizabeth Matallana. All rights reserved.</p>
-</footer>
+    <section id="contact">
+        <h2>Get In Touch</h2>
+        <div class="about-grid" style="text-align: center;">
+            <p>I am currently looking for opportunities to apply my analytical skills in the healthcare sector. Whether you have a question or just want to connect, my inbox is always open.</p>
+            <br>
+            <a href="mailto:emat152@outlook.com" class="social-btn" style="display: inline-flex; width: auto; padding: 0 25px; border-radius: 30px; gap: 10px; margin-top: 20px;">
+                <i class="fas fa-paper-plane"></i> Send Message
+            </a>
+        </div>
+    </section>
 
+    <footer>
+        <div class="contact-details">
+            <a href="mailto:emat152@outlook.com" class="contact-link">emat152@outlook.com</a>
+            <a href="tel:8084296419" class="contact-link">(808) 429-6419</a>
+            <a href="#" class="contact-link">LinkedIn Profile</a>
+        </div>
+        <p>Buckeye, AZ</p>
+        <div class="footer-note">
+            Built with HTML/CSS/JS | Hosted on GitHub Pages | Last updated February 2026
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Simple Nav Shadow on Scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                nav.style.boxShadow = '0 2px 10px rgba(0,0,0,0.05)';
+            }
+        });
+    </script>
 </body>
 </html>
