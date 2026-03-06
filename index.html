@@ -3,516 +3,615 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Elizabeth Matallana - Healthcare Data Analyst Portfolio. Specializing in clinical data validation, EHR management, and health informatics.">
-    <meta name="keywords" content="Healthcare Data Analyst, EHR Audit, Clinical Data, Elizabeth Matallana, Data Analytics Portfolio">
-    <title>Elizabeth Matallana | Healthcare Data Analyst</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Elizabeth Matallana - Healthcare Data Analyst Portfolio</title>
+    <meta name="description" content="Portfolio of Elizabeth Matallana, a Healthcare Data Analyst specializing in EHR data quality, clinical workflows, and HIPAA-compliant data validation.">
+    <meta name="keywords" content="Elizabeth Matallana, Healthcare Data Analyst, EHR Audit, HIPAA, Clinical Analytics, Data Science, Portfolio">
+    <meta name="author" content="Elizabeth Matallana">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     
     <style>
         :root {
-            --primary: #0f4c75; /* Deep Navy - Professional/Trust */
-            --secondary: #3282b8; /* Tech Blue */
-            --accent: #00b8a9; /* Healthcare Teal */
-            --bg-light: #f9fbfd;
-            --text-dark: #1b262c;
-            --text-muted: #555;
-            --white: #ffffff;
-            --transition: all 0.3s ease;
+            --navy: #001F3F;
+            --teal: #008080;
+            --dark-gray: #333333;
+            --light-bg: #F8F9FA;
+            --white: #FFFFFF;
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --soft-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --navy-gradient: linear-gradient(135deg, #001F3F 0%, #003366 100%);
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+        /* Dark Mode Variables */
+        body.dark-mode {
+            --light-bg: #121212;
+            --white: #1e1e1e;
+            --dark-gray: #e0e0e0;
+            --navy: #4db8ff;
+            --soft-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--dark-gray);
             line-height: 1.6;
-            color: var(--text-dark);
-            background-color: var(--bg-light);
+            overflow-x: hidden;
+            transition: background-color 0.3s ease;
         }
+
+        h1, h2, h3, .nav-brand { font-family: 'Montserrat', sans-serif; }
+
+        /* --- Scrollbar --- */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--light-bg); }
+        ::-webkit-scrollbar-thumb { background: var(--navy); border-radius: 10px; }
 
         /* --- Navigation --- */
         nav {
-            position: sticky;
+            position: fixed;
             top: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem 5%;
+            width: 100%;
+            padding: 15px 10%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            background: transparent;
         }
 
-        .logo {
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: var(--primary);
+        nav.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: var(--soft-shadow);
+            padding: 10px 10%;
+        }
+        
+        body.dark-mode nav.scrolled { background: rgba(18, 18, 18, 0.95); }
+
+        .nav-brand { 
+            font-weight: 800; 
+            font-size: 1.2rem; 
+            color: var(--white); 
             text-decoration: none;
+            letter-spacing: 1px;
         }
+        nav.scrolled .nav-brand { color: var(--navy); }
 
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-
-        .nav-links li {
-            margin-left: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 500;
+        .nav-links { display: flex; list-style: none; gap: 25px; align-items: center; }
+        .nav-links a { 
+            text-decoration: none; 
+            color: var(--white); 
+            font-weight: 500; 
             font-size: 0.9rem;
             transition: var(--transition);
+            position: relative;
         }
+        nav.scrolled .nav-links a { color: var(--dark-gray); }
+        .nav-links a:hover { color: var(--teal) !important; }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0; height: 2px;
+            bottom: -5px; left: 0;
+            background-color: var(--teal);
+            transition: var(--transition);
+        }
+        .nav-links a:hover::after { width: 100%; }
 
-        .nav-links a:hover {
-            color: var(--accent);
+        #dark-mode-toggle {
+            background: none; border: none; cursor: pointer; color: var(--white); font-size: 1.1rem;
         }
+        nav.scrolled #dark-mode-toggle { color: var(--navy); }
 
         /* --- Hero Section --- */
-        header {
-            height: 80vh;
+        .hero {
+            height: 100vh;
+            background: var(--navy-gradient);
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: var(--white);
-            padding: 0 5%;
+            position: relative;
+            padding-top: 80px;
+            overflow: hidden;
         }
 
-        .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            letter-spacing: -1px;
+        #particles-js {
+            position: absolute;
+            width: 100%; height: 100%;
+            top: 0; left: 0;
+            z-index: 1;
         }
 
-        .hero-content p {
-            font-size: 1.2rem;
-            font-weight: 300;
-            max-width: 700px;
-            margin: 0 auto 2rem;
-            opacity: 0.9;
+        .hero-content { z-index: 2; max-width: 900px; padding: 20px; }
+        
+        .profile-img {
+            width: 150px; height: 150px;
+            border-radius: 50%;
+            border: 4px solid var(--teal);
+            margin-bottom: 20px;
+            object-fit: cover;
+            box-shadow: var(--shadow);
+            animation: fadeInDown 1s ease;
         }
+
+        .hero h1 { 
+            font-size: 3.5rem; 
+            margin-bottom: 10px; 
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero h2 { 
+            font-size: 1.5rem; 
+            font-weight: 300; 
+            color: var(--teal); 
+            margin-bottom: 25px;
+            min-height: 1.6em;
+        }
+
+        .hero-tagline { font-size: 1.1rem; margin-bottom: 30px; opacity: 0.9; }
 
         .btn {
             display: inline-block;
-            padding: 0.8rem 2rem;
-            background: var(--accent);
-            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 50px;
             text-decoration: none;
-            border-radius: 5px;
             font-weight: 600;
             transition: var(--transition);
-            border: none;
             cursor: pointer;
+            margin: 10px;
         }
 
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            background: #00a396;
+        .btn-primary { background: var(--teal); color: var(--white); border: 2px solid var(--teal); }
+        .btn-primary:hover { background: transparent; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0, 128, 128, 0.4); }
+
+        .btn-outline { background: transparent; color: var(--white); border: 2px solid var(--white); }
+        .btn-outline:hover { background: var(--white); color: var(--navy); transform: translateY(-3px); }
+
+        /* --- Sections General --- */
+        section { padding: 100px 10%; position: relative; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 2.5rem; color: var(--navy); margin-bottom: 15px; position: relative; }
+        .section-header h2::after {
+            content: ''; position: absolute; width: 60px; height: 3px; background: var(--teal); bottom: -10px; left: 50%; transform: translateX(-50%);
         }
 
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--white);
-            margin-left: 1rem;
+        /* --- About Section --- */
+        .about-container {
+            display: flex; gap: 50px; align-items: center;
         }
+        .about-text { flex: 1; font-size: 1.1rem; }
+        .highlight { color: var(--teal); font-weight: 700; }
 
-        /* --- Sections Layout --- */
-        section {
-            padding: 5rem 10%;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-            padding-bottom: 1rem;
-            font-size: 2.2rem;
-            color: var(--primary);
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--accent);
-            border-radius: 2px;
-        }
-
-        /* --- Project Card Grid --- */
-        .project-card {
-            background: var(--white);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            transition: var(--transition);
-            margin-bottom: 3rem;
-            border: 1px solid #eee;
-        }
-
-        .project-img {
-            background: #eef2f7;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 300px;
-            overflow: hidden;
-        }
-
-        .project-img img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .project-card:hover .project-img img {
-            transform: scale(1.03);
-        }
-
-        .project-info {
-            padding: 2.5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .project-info h3 {
-            font-size: 1.8rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .project-info ul {
-            list-style: none;
-            margin: 1rem 0;
-        }
-
-        .project-info li {
-            margin-bottom: 0.5rem;
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            display: flex;
-            align-items: baseline;
-        }
-
-        .project-info li i {
-            margin-right: 10px;
-            color: var(--accent);
-        }
-
-        /* --- Experience/Education Layout --- */
-        .card-grid {
+        /* --- Skills Grid --- */
+        .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            gap: 30px;
         }
-
-        .card {
+        .skill-card {
             background: var(--white);
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-            transition: var(--transition);
-            border-left: 5px solid var(--secondary);
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
-        }
-
-        .card h4 {
-            color: var(--primary);
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .card .subtitle {
-            font-weight: 600;
-            color: var(--accent);
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .card .date {
-            font-size: 0.85rem;
-            color: #888;
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        /* --- Skills Section --- */
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            justify-content: center;
-        }
-
-        .skill-group {
-            background: #fff;
-            padding: 2rem;
-            border-radius: 10px;
-            flex: 1 1 300px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-        }
-
-        .skill-group h4 {
-            border-bottom: 2px solid var(--accent);
-            display: inline-block;
-            margin-bottom: 1rem;
-            padding-bottom: 5px;
-            color: var(--primary);
-        }
-
-        .skill-tag {
-            display: inline-block;
-            background: #f0f7f7;
-            color: var(--primary);
-            padding: 0.4rem 0.8rem;
-            border-radius: 30px;
-            font-size: 0.85rem;
-            margin: 0.3rem;
-            font-weight: 500;
-            border: 1px solid #d0e8e6;
-        }
-
-        /* --- Footer --- */
-        footer {
-            background: var(--primary);
-            color: var(--white);
-            padding: 3rem 10%;
-            text-align: center;
-        }
-
-        .footer-links {
-            margin: 1.5rem 0;
-        }
-
-        .footer-links a {
-            color: var(--white);
-            font-size: 1.5rem;
-            margin: 0 1rem;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--soft-shadow);
             transition: var(--transition);
         }
+        .skill-card:hover { transform: translateY(-10px); box-shadow: var(--shadow); }
+        .skill-card i { font-size: 2rem; color: var(--teal); margin-bottom: 20px; }
+        
+        .progress-container { margin-top: 15px; }
+        .progress-label { display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: 5px; }
+        .progress-bar { height: 8px; background: #e0e0e0; border-radius: 10px; overflow: hidden; }
+        .progress-fill { height: 100%; background: var(--teal); width: 0; transition: width 1.5s ease-in-out; }
 
-        .footer-links a:hover {
-            color: var(--accent);
+        /* --- Timeline (Experience) --- */
+        .timeline { position: relative; max-width: 1000px; margin: 0 auto; }
+        .timeline::before {
+            content: ''; position: absolute; width: 4px; background: #e0e0e0; top: 0; bottom: 0; left: 50%; transform: translateX(-50%);
         }
 
-        /* --- Media Queries --- */
-        @media (max-width: 900px) {
-            .project-card {
-                grid-template-columns: 1fr;
-            }
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-            nav {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            .nav-links li {
-                margin: 0 10px;
-            }
+        .timeline-item { padding: 20px 40px; position: relative; width: 50%; opacity: 0; }
+        .timeline-item.left { left: 0; text-align: right; }
+        .timeline-item.right { left: 50%; text-align: left; }
+
+        .timeline-dot {
+            position: absolute; width: 20px; height: 20px; background: var(--teal); border: 4px solid var(--white); border-radius: 50%; top: 25px; z-index: 1;
         }
+        .left .timeline-dot { right: -12px; }
+        .right .timeline-dot { left: -12px; }
+
+        .timeline-content {
+            background: var(--white); padding: 25px; border-radius: 15px; box-shadow: var(--soft-shadow);
+        }
+        .timeline-date { color: var(--teal); font-weight: 700; font-size: 0.9rem; display: block; margin-bottom: 10px; }
+        .timeline-content h3 { font-size: 1.2rem; color: var(--navy); }
+        .timeline-content h4 { font-size: 0.95rem; color: #777; margin-bottom: 10px; }
+        .timeline-content ul { list-style: none; font-size: 0.9rem; }
+        .timeline-content li { margin-bottom: 8px; position: relative; }
+
+        /* --- Projects --- */
+        .project-card {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 40px; background: var(--white); border-radius: 20px; overflow: hidden; box-shadow: var(--shadow);
+        }
+        .project-img-container { position: relative; cursor: pointer; overflow: hidden; height: 350px;}
+        .project-img-container img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
+        .project-img-container:hover img { transform: scale(1.1); }
+        .project-info { padding: 40px; display: flex; flex-direction: column; justify-content: center; }
+        .project-tag { display: inline-block; background: rgba(0, 128, 128, 0.1); color: var(--teal); padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; margin-bottom: 15px; }
+
+        /* --- Modal --- */
+        .modal {
+            display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); padding: 50px;
+        }
+        .modal-content { max-width: 90%; max-height: 90%; margin: auto; display: block; border-radius: 10px; }
+        .modal-close { position: absolute; top: 20px; right: 40px; color: white; font-size: 40px; cursor: pointer; }
+
+        /* --- Education/Certs --- */
+        .edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+        .edu-card { background: var(--white); padding: 30px; border-radius: 15px; border-top: 5px solid var(--navy); box-shadow: var(--soft-shadow); }
+
+        /* --- Contact/Footer --- */
+        footer { background: var(--navy); color: var(--white); padding: 80px 10% 20px; text-align: center; }
+        .contact-info { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-bottom: 40px; }
+        .contact-item i { font-size: 1.5rem; color: var(--teal); margin-bottom: 10px; display: block; }
+        .contact-item a { color: var(--white); text-decoration: none; transition: var(--transition); }
+        .contact-item a:hover { color: var(--teal); }
+        
+        .social-links { margin-bottom: 30px; }
+        .social-links a { font-size: 1.8rem; color: var(--white); margin: 0 15px; transition: var(--transition); }
+        .social-links a:hover { color: var(--teal); transform: translateY(-5px); }
+        
+        .scroll-top {
+            position: fixed; bottom: 30px; right: 30px; background: var(--teal); color: white; width: 50px; height: 50px; border-radius: 50%; display: none; align-items: center; justify-content: center; text-decoration: none; box-shadow: var(--shadow); z-index: 100;
+        }
+
+        /* --- Mobile Responsive --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .about-container { flex-direction: column; }
+            .timeline::before { left: 40px; }
+            .timeline-item { width: 100%; text-align: left !important; padding-left: 70px; }
+            .timeline-dot { left: 30px !important; }
+            .timeline-item.right { left: 0; }
+            .project-card { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+
+        /* --- Animations --- */
+        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s all ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
 
-    <nav>
-        <a href="#" class="logo">ELIZABETH MATALLANA</a>
+    <nav id="navbar">
+        <a href="#" class="nav-brand">EM. ANALYTICS</a>
         <ul class="nav-links">
             <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#experience">Experience</a></li>
             <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#education">Education</a></li>
             <li><a href="#contact">Contact</a></li>
+            <li><button id="dark-mode-toggle"><i class="fas fa-moon"></i></button></li>
         </ul>
     </nav>
 
-    <header>
+    <header class="hero" id="home">
+        <div id="particles-js"></div>
         <div class="hero-content">
-            <h1>Healthcare Data Analyst</h1>
-            <p>Bridging the gap between <strong>Clinical Care</strong> and <strong>Data Intelligence</strong>. Leveraging 7+ years of operational data experience to improve patient outcomes and system efficiency.</p>
-            <div class="cta-buttons">
-                <a href="#projects" class="btn">View My Work</a>
-                <a href="Elizabeth_Matallana_Resume.pdf" target="_blank" class="btn btn-outline"><i class="fas fa-file-download"></i> Resume</a>
+            <img src="https://via.placeholder.com/150/001F3F/FFFFFF?text=EM" alt="Elizabeth Matallana" class="profile-img">
+            <h1>Elizabeth Matallana</h1>
+            <h2 id="typing-text"></h2>
+            <p class="hero-tagline">Leveraging clinical precision and military discipline to unlock the power of healthcare data.</p>
+            <div class="animate__animated animate__fadeInUp animate__delay-1s">
+                <a href="#projects" class="btn btn-primary">View Projects</a>
+                <a href="Elizabeth_Matallana_Resume.pdf" class="btn btn-outline" download><i class="fas fa-download"></i> Download Resume</a>
             </div>
         </div>
     </header>
 
     <section id="about">
-        <h2 class="section-title">Professional Profile</h2>
-        <div style="max-width: 800px; margin: 0 auto; text-align: center; font-size: 1.1rem; color: var(--text-muted);">
-            <p>
-                As a healthcare professional transitioning into <strong>Data Analytics</strong>, I bring a unique perspective shaped by frontline dialysis care, military data management, and technical support. 
-                With a Bachelor’s in Kinesiology and an <strong>MS in Data Analytics (Data Science Focus) commencing March 2026</strong>, I am dedicated to transforming clinical observations into actionable insights. 
-                My background in validating patient records for 50+ patients weekly ensures I approach datasets with an unwavering commitment to HIPAA compliance, data integrity, and operational accuracy.
-            </p>
+        <div class="section-header reveal">
+            <h2>Professional Profile</h2>
+        </div>
+        <div class="about-container reveal">
+            <div class="about-text">
+                <p>Healthcare professional transitioning into <span class="highlight">Data Analytics</span> with a strong foundation in clinical workflows, patient data, and technical support. Currently pursuing a <span class="highlight">Master’s in Data Analytics</span> at Western Governors University (Data Science Focus).</p>
+                <br>
+                <p>I am uniquely positioned as a candidate who has operated at the intersection of high-stakes military data systems and high-volume clinical environments. Leveraging hands-on experience with patient data validation in dialysis <span class="highlight">(50+ patients/week)</span> and strict HIPAA compliance, I bridge the gap between technical datasets and real-world medical outcomes.</p>
+                <br>
+                <p>Disciplined, mission-focused, and adept at communicating findings to both clinical and technical teams.</p>
+            </div>
         </div>
     </section>
 
-    <section id="projects" style="background-color: #f1f4f8;">
-        <h2 class="section-title">Data Analytics Projects</h2>
-        
-        <div class="project-card">
-            <div class="project-img">
-                <div style="text-align: center; padding: 20px;">
-                    <i class="fas fa-file-excel" style="font-size: 5rem; color: #217346; margin-bottom: 1rem;"></i>
-                    <p style="font-weight: 600; color: #555;">EHR Data Quality Audit</p>
-                    <p style="font-size: 0.8rem; color: #888;">Dialysis Patient Records Validation</p>
+    <section id="skills" style="background-color: var(--white);">
+        <div class="section-header reveal">
+            <h2>Technical Expertise</h2>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-card reveal">
+                <i class="fas fa-file-medical"></i>
+                <h3>Clinical & Compliance</h3>
+                <p>Expertise in EHR/EMR systems (Gaia Chairside), HIPAA/PHI standards, and medical terminology.</p>
+                <div class="progress-container">
+                    <div class="progress-label"><span>EHR/EMR Management</span><span>95%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" data-width="95%"></div></div>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-label"><span>HIPAA Compliance</span><span>100%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" data-width="100%"></div></div>
                 </div>
             </div>
-            <div class="project-info">
-                <h3>EHR Data Quality Audit</h3>
-                <p>Designed and built a specialized tool to audit clinical records for completeness and accuracy, addressing the critical need for high-quality data in renal care.</p>
-                <ul>
-                    <li><i class="fas fa-check-circle"></i> <strong>Objective:</strong> Identified potential compliance gaps in 20-30% of sample records.</li>
-                    <li><i class="fas fa-tools"></i> <strong>Tools:</strong> Excel / Google Sheets, Conditional Formatting, Complex Formulas (IF/OR/ISBLANK).</li>
-                    <li><i class="fas fa-chart-line"></i> <strong>Impact:</strong> Flagged missing vitals and out-of-range treatment values automatically.</li>
-                </ul>
-                <a href="https://docs.google.com/spreadsheets/d/1iNN5eZkIR67Tgg6hBZZQG-DrM25-H_zX/edit?usp=sharing" target="_blank" class="btn" style="padding: 0.5rem 1.2rem; font-size: 0.9rem; align-self: flex-start;">View Live Audit Tool</a>
+
+            <div class="skill-card reveal">
+                <i class="fas fa-chart-line"></i>
+                <h3>Data Analysis</h3>
+                <p>Advanced Excel (Filters, Sorting, Formulas), Statistical Analysis, and Clinical QA Reporting.</p>
+                <div class="progress-container">
+                    <div class="progress-label"><span>Microsoft Excel</span><span>85%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" data-width="85%"></div></div>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-label"><span>Statistical Analysis</span><span>70%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" data-width="70%"></div></div>
+                </div>
+            </div>
+
+            <div class="skill-card reveal">
+                <i class="fas fa-laptop-code"></i>
+                <h3>Technical Support</h3>
+                <p>IT troubleshooting, ticketing systems, and military operational data systems (AFATDS).</p>
+                <div class="progress-container">
+                    <div class="progress-label"><span>Systems Maintenance</span><span>90%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" data-width="90%"></div></div>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-label"><span>Technical Support</span><span>80%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" data-width="80%"></div></div>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="experience">
-        <h2 class="section-title">Professional Experience</h2>
-        <div class="card-grid">
-            
-            <div class="card">
-                <span class="date">Mar 2025 – Oct 2025</span>
-                <span class="subtitle">Fresenius Medical Care</span>
-                <h4>Dialysis Technician</h4>
-                <p style="font-size: 0.9rem; color: var(--text-muted);">Recorded and validated patient vitals and treatment parameters for 15+ patients daily within Gaia Chairside EMR systems. Monitored real-time data to identify clinical abnormalities.</p>
+        <div class="section-header reveal">
+            <h2>Professional Experience</h2>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item left reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">March 2025 – October 2025</span>
+                    <h3>Dialysis Technician</h3>
+                    <h4>Fresenius Medical Care | Goodyear, AZ</h4>
+                    <ul>
+                        <li>Validated vitals and treatment parameters within Gaia Chairside EMR (50 patients/week).</li>
+                        <li>Monitored real-time clinical data and escalated abnormalities per protocol.</li>
+                    </ul>
+                </div>
             </div>
-
-            <div class="card">
-                <span class="date">Sep 2017 – Feb 2025</span>
-                <span class="subtitle">Army National Guard</span>
-                <h4>Fire Control Specialist</h4>
-                <p style="font-size: 0.9rem; color: var(--text-muted);">Entered and analyzed mission-critical data within AFATDS digital systems. Maintained extreme data integrity under time-sensitive, high-stakes conditions.</p>
+            <div class="timeline-item right reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">September 2017 – February 2025</span>
+                    <h3>Fire Control Specialist</h3>
+                    <h4>Army National Guard | Various Locations</h4>
+                    <ul>
+                        <li>Analyzed mission-critical operational data within AFATDS digital systems.</li>
+                        <li>Ensured 100% data integrity under extreme time-sensitive conditions.</li>
+                    </ul>
+                </div>
             </div>
-
-            <div class="card">
-                <span class="date">Jan 2023 – Jan 2024</span>
-                <span class="subtitle">BioHealth</span>
-                <h4>Injury Prevention Specialist</h4>
-                <p style="font-size: 0.9rem; color: var(--text-muted);">Reviewed biomechanical and movement outcome data to support rehabilitation strategies. Maintained HIPAA-compliant progress notes in clinical software.</p>
+            <div class="timeline-item left reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">January 2023 – January 2024</span>
+                    <h3>Injury Prevention Specialist</h3>
+                    <h4>BioHealth | Honolulu, HI</h4>
+                    <ul>
+                        <li>Performed biomechanical assessments and documented in clinical software.</li>
+                        <li>Reviewed outcome data to support injury prevention strategies.</li>
+                    </ul>
+                </div>
             </div>
-
-            <div class="card">
-                <span class="date">Jan 2021 – July 2021</span>
-                <span class="subtitle">University of Portland</span>
-                <h4>IT Help Desk Support</h4>
-                <p style="font-size: 0.9rem; color: var(--text-muted);">Resolved technical system access issues and documented recurring trends in ticketing systems to improve institutional documentation consistency.</p>
-            </div>
-
         </div>
     </section>
 
-    <section id="skills" style="background-color: #f1f4f8;">
-        <h2 class="section-title">Key Skills & Expertise</h2>
-        <div class="skills-container">
-            <div class="skill-group">
-                <h4><i class="fas fa-notes-medical"></i> Healthcare & Compliance</h4>
-                <br>
-                <span class="skill-tag">EHR/EMR Management</span>
-                <span class="skill-tag">HIPAA & PHI Compliance</span>
-                <span class="skill-tag">Medical Terminology</span>
-                <span class="skill-tag">Clinical Workflow Optimization</span>
-                <span class="skill-tag">Patient Data Entry</span>
+    <section id="projects" style="background-color: var(--white);">
+        <div class="section-header reveal">
+            <h2>Data Analytics Projects</h2>
+        </div>
+        <div class="project-card reveal">
+            <div class="project-img-container" onclick="openModal('images/audit-overview.png')">
+                <img src="https://via.placeholder.com/600x400/001F3F/FFFFFF?text=EHR+Audit+Preview" alt="EHR Data Audit Overview" id="project-main-img">
+                <div style="padding: 10px; display: flex; gap: 5px; background: #eee;">
+                    <img src="images/audit-screenshot1.png" alt="Audit Screen 1" style="width: 32%; height: 60px; object-fit: cover; opacity: 0.7;" onerror="this.src='https://via.placeholder.com/100?text=Data'">
+                    <img src="images/audit-formula.png" alt="Formula Logic" style="width: 32%; height: 60px; object-fit: cover; opacity: 0.7;" onerror="this.src='https://via.placeholder.com/100?text=Logic'">
+                    <img src="images/audit-overview.png" alt="Overview" style="width: 32%; height: 60px; object-fit: cover; opacity: 0.7;" onerror="this.src='https://via.placeholder.com/100?text=Stats'">
+                </div>
             </div>
-            
-            <div class="skill-group">
-                <h4><i class="fas fa-database"></i> Data & Technical</h4>
-                <br>
-                <span class="skill-tag">Data Validation & QA</span>
-                <span class="skill-tag">Excel (Formulas, Analysis)</span>
-                <span class="skill-tag">Clinical Reporting</span>
-                <span class="skill-tag">IT Troubleshooting</span>
-                <span class="skill-tag">Systems Maintenance</span>
-                <span class="skill-tag">AFATDS Systems</span>
-            </div>
-
-            <div class="skill-group">
-                <h4><i class="fas fa-users"></i> Professional Strengths</h4>
-                <br>
-                <span class="skill-tag">Process Improvement</span>
-                <span class="skill-tag">Interdisciplinary Collaboration</span>
-                <span class="skill-tag">Attention to Detail</span>
-                <span class="skill-tag">Problem-Solving</span>
-                <span class="skill-tag">Regulatory Compliance</span>
+            <div class="project-info">
+                <span class="project-tag">Healthcare Data Validation</span>
+                <h3>EHR Data Quality Audit</h3>
+                <p>Developed a robust validation tool in Excel to audit dialysis patient records. This project simulates real-world quality assurance protocols in renal clinics.</p>
+                <ul style="margin: 20px 0; font-size: 0.95rem;">
+                    <li><i class="fas fa-check-circle" style="color: var(--teal);"></i> Identified compliance gaps in 20-30% of sample records.</li>
+                    <li><i class="fas fa-check-circle" style="color: var(--teal);"></i> Used IF/OR/ISBLANK logic to flag out-of-range vitals.</li>
+                    <li><i class="fas fa-check-circle" style="color: var(--teal);"></i> Summary dashboards for management review.</li>
+                </ul>
+                <a href="https://docs.google.com/spreadsheets/d/1iNN5eZkIR67Tgg6hBZZQG-DrM25-H_zX/edit?usp=sharing" target="_blank" class="btn btn-primary">View Audit Tool (Live)</a>
             </div>
         </div>
     </section>
+
+    <div id="imgModal" class="modal">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImg">
+    </div>
 
     <section id="education">
-        <h2 class="section-title">Education & Certifications</h2>
-        <div class="card-grid">
-            <div class="card">
-                <span class="date">Mar 2026 – Sep 2026 (Expected)</span>
-                <span class="subtitle">Western Governors University</span>
-                <h4>M.S. Data Analytics (Data Science Focus)</h4>
-                <p style="font-size: 0.85rem;">Graduate coursework focused on statistical modeling, data cleaning, and health informatics.</p>
+        <div class="section-header reveal">
+            <h2>Education & Certifications</h2>
+        </div>
+        <div class="edu-grid">
+            <div class="edu-card reveal">
+                <i class="fas fa-graduation-cap" style="font-size: 2rem; color: var(--navy);"></i>
+                <h3 style="margin-top:15px">Master’s in Data Analytics</h3>
+                <p class="highlight">Western Governors University | In Progress</p>
+                <p style="font-size: 0.85rem; margin-top: 10px;">
+                    <strong>Predictive Modeling:</strong> Forecasting patient trends.<br>
+                    <strong>Statistical Analysis:</strong> Applying inferential stats to health data.
+                </p>
             </div>
-
-            <div class="card">
-                <span class="date">2020 – 2024</span>
-                <span class="subtitle">Oregon State University</span>
-                <h4>B.S. Kinesiology</h4>
-                <p style="font-size: 0.85rem;">Coursework: Statistics for Health Sciences, Biomechanics, Exercise Physiology.</p>
+            <div class="edu-card reveal">
+                <i class="fas fa-university" style="font-size: 2rem; color: var(--navy);"></i>
+                <h3 style="margin-top:15px">B.S. in Kinesiology</h3>
+                <p class="highlight">Oregon State University | 2024</p>
+                <p style="font-size: 0.85rem; margin-top: 10px;">
+                    <strong>Statistics for Health Sciences:</strong> Foundational clinical analytics.<br>
+                    <strong>Human Anatomy:</strong> Specialized domain knowledge for data.
+                </p>
             </div>
-
-            <div class="card">
-                <span class="subtitle">Certifications</span>
-                <ul style="list-style: none; font-size: 0.9rem; color: var(--text-muted);">
-                    <li><i class="fas fa-shield-alt text-accent"></i> CompTIA Security+</li>
-                    <li><i class="fas fa-heartbeat text-accent"></i> Certified EKG Technician (CET)</li>
-                    <li><i class="fas fa-dumbbell text-accent"></i> NASM Certified Personal Trainer</li>
-                    <li><i class="fas fa-user-nurse text-accent"></i> CPR/AED Certified</li>
+            <div class="edu-card reveal">
+                <i class="fas fa-certificate" style="font-size: 2rem; color: var(--navy);"></i>
+                <h3 style="margin-top:15px">Certifications</h3>
+                <ul style="list-style: none; font-size: 0.9rem; margin-top: 10px;">
+                    <li><i class="fas fa-shield-halved"></i> CompTIA Security+</li>
+                    <li><i class="fas fa-heart-pulse"></i> Certified EKG Technician (CET)</li>
+                    <li><i class="fas fa-dumbbell"></i> NASM Certified Personal Trainer</li>
                 </ul>
             </div>
         </div>
     </section>
 
     <footer id="contact">
-        <h3>Let's Connect</h3>
-        <p>I am currently seeking opportunities to apply my clinical data experience in a Healthcare Data Analyst role.</p>
-        <p><i class="fas fa-map-marker-alt"></i> Buckeye, AZ</p>
-        <div class="footer-links">
-            <a href="mailto:emat152@outlook.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-            <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            <a href="tel:8084296419" aria-label="Phone"><i class="fas fa-phone"></i></a>
+        <div class="section-header">
+            <h2 style="color: white;">Get In Touch</h2>
         </div>
-        <p style="font-size: 0.8rem; opacity: 0.7; margin-top: 2rem;">&copy; 2026 Elizabeth Matallana. All Rights Reserved.</p>
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:emat152@outlook.com">emat152@outlook.com</a>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <a href="tel:8084296419">(808) 429-6419</a>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-location-dot"></i>
+                <span>Buckeye, AZ</span>
+            </div>
+        </div>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+        </div>
+        <p>&copy; 2026 Elizabeth Matallana. Driven by Data. Informed by Care.</p>
     </footer>
 
+    <a href="#" class="scroll-top" id="scrollTop"><i class="fas fa-arrow-up"></i></a>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        // Smooth Scrolling for Nav Links
+        // Particles Config
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#ffffff" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.2, "random": false },
+                "size": { "value": 3, "random": true },
+                "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.1, "width": 1 },
+                "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true }
+            },
+            "retina_detect": true
+        });
+
+        // Typing Effect
+        const text = "Healthcare Data Analyst";
+        let i = 0;
+        function typeWriter() {
+            if (i < text.length) {
+                document.getElementById("typing-text").innerHTML += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            }
+        }
+        window.onload = typeWriter;
+
+        // Sticky Nav & Scroll Top Button
+        window.onscroll = function() {
+            const nav = document.getElementById("navbar");
+            const topBtn = document.getElementById("scrollTop");
+            if (window.pageYOffset > 100) {
+                nav.classList.add("scrolled");
+                topBtn.style.display = "flex";
+            } else {
+                nav.classList.remove("scrolled");
+                topBtn.style.display = "none";
+            }
+            reveal();
+            animateProgress();
+        };
+
+        // Scroll Reveal
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+
+        // Animate Progress Bars
+        function animateProgress() {
+            const fills = document.querySelectorAll('.progress-fill');
+            fills.forEach(fill => {
+                const rect = fill.getBoundingClientRect();
+                if(rect.top < window.innerHeight) {
+                    fill.style.width = fill.getAttribute('data-width');
+                }
+            });
+        }
+
+        // Modal Logic
+        function openModal(imgSrc) {
+            document.getElementById("imgModal").style.display = "block";
+            document.getElementById("modalImg").src = imgSrc;
+        }
+        function closeModal() {
+            document.getElementById("imgModal").style.display = "none";
+        }
+
+        // Dark Mode Toggle
+        const btn = document.getElementById("dark-mode-toggle");
+        btn.onclick = function() {
+            document.body.classList.toggle("dark-mode");
+            const icon = btn.querySelector("i");
+            icon.classList.toggle("fa-moon");
+            icon.classList.toggle("fa-sun");
+        }
+
+        // Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -520,27 +619,6 @@
                     behavior: 'smooth'
                 });
             });
-        });
-
-        // Simple Fade-in animation for cards on scroll
-        const observerOptions = {
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.card, .project-card').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'all 0.6s ease-out';
-            observer.observe(el);
         });
     </script>
 </body>
