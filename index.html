@@ -51,7 +51,7 @@
         .hero-content { z-index: 2; max-width: 900px; padding: 20px; }
         .hero h1 { font-size: 4rem; margin-bottom: 10px; text-transform: uppercase; font-weight: 800; letter-spacing: 2px; }
         .hero h2 { font-size: 1.8rem; color: var(--teal); margin-bottom: 20px; height: 1.2em; }
-        .hero-bio { font-size: 1.1rem; opacity: 0.9; font-weight: 300; max-width: 700px; margin: 0 auto 35px; line-height: 1.8; }
+        .hero-bio { font-size: 1.1rem; opacity: 0.95; font-weight: 300; max-width: 750px; margin: 0 auto 35px; line-height: 1.8; }
         
         .btn { display: inline-block; padding: 15px 35px; border-radius: 4px; text-decoration: none; font-weight: 600; transition: var(--transition); cursor: pointer; font-size: 0.85rem; text-transform: uppercase; margin: 10px; }
         .btn-primary { background: var(--teal); color: var(--white); border: 2px solid var(--teal); }
@@ -65,7 +65,7 @@
         .section-header h2 { font-size: 2.2rem; color: var(--navy); text-transform: uppercase; margin-bottom: 15px; letter-spacing: 1px; }
         .section-header .line { width: 60px; height: 4px; background: var(--teal); margin: 0 auto; border-radius: 2px; }
 
-        /* --- Skills & Certs Grid --- */
+        /* --- Skills Grid --- */
         .skills-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 50px; }
         .skill-card { background: var(--white); padding: 35px; border-radius: 15px; box-shadow: var(--shadow); transition: 0.3s; }
         .skill-card:hover { transform: translateY(-5px); }
@@ -74,7 +74,7 @@
         .skill-tags { display: flex; flex-wrap: wrap; gap: 10px; }
         .tag { background: #f0f4f8; color: var(--navy); padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
 
-        /* --- Professional Journey (Fixed Timeline) --- */
+        /* --- Timeline --- */
         .timeline { position: relative; max-width: 1000px; margin: 0 auto; }
         .timeline::before { content: ''; position: absolute; left: 50%; width: 2px; height: 100%; background: #ddd; transform: translateX(-50%); }
         .timeline-item { width: 100%; margin-bottom: 50px; display: flex; justify-content: space-between; align-items: center; position: relative; }
@@ -88,9 +88,9 @@
         .timeline-content li { margin-bottom: 8px; position: relative; padding-left: 15px; }
         .timeline-content li::before { content: '•'; position: absolute; left: 0; color: var(--teal); font-weight: bold; }
 
-        /* --- Showcase Section (Updated with Raw Data) --- */
+        /* --- Showcase Section --- */
         .showcase-card { background: var(--white); border-radius: 20px; overflow: hidden; box-shadow: var(--shadow); max-width: 1100px; margin: 0 auto; }
-        .showcase-header { padding: 40px; text-align: center; background: var(--white); }
+        .showcase-header { padding: 40px; text-align: center; }
         .showcase-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 0 20px 40px; }
         .showcase-box { border-radius: 12px; overflow: hidden; border: 1px solid #eee; position: relative; cursor: pointer; }
         .showcase-box img { width: 100%; height: auto; display: block; transition: 0.4s; }
@@ -104,12 +104,7 @@
         .cert-item { background: var(--white); padding: 25px; border-radius: 12px; text-align: center; box-shadow: var(--soft-shadow); border: 1px solid #eee; }
         .cert-item i { font-size: 2rem; color: var(--teal); margin-bottom: 15px; }
 
-        /* --- Footer --- */
-        footer { background: var(--navy); color: white; padding: 80px 10% 30px; text-align: center; }
-        .footer-socials a { color: white; font-size: 1.8rem; margin: 0 20px; transition: 0.3s; }
-        .footer-socials a:hover { color: var(--teal); transform: translateY(-5px); }
-
-        /* --- Animations & Responsive --- */
+        /* --- Reveal Animations --- */
         .reveal { opacity: 0; transform: translateY(30px); transition: 1s ease; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
@@ -143,7 +138,7 @@
             <h1 class="animate__animated animate__fadeInDown">Elizabeth Matallana</h1>
             <h2 id="typewriter"></h2>
             <p class="hero-bio animate__animated animate__fadeIn animate__delay-1s">
-                Healthcare professional transitioning into data analytics with a foundation in clinical workflows, patient data, and military precision. Expert in EHR data quality validation and HIPAA-compliant reporting.
+                Healthcare professional transitioning into data analytics, leveraging deep knowledge of clinical workflows, patient data, and military-trained precision. Experienced in EHR data quality validation, healthcare reporting, and HIPAA-compliant data management, translating complex healthcare data into accurate, actionable insights.
             </p>
             <div class="animate__animated animate__fadeInUp animate__delay-2s">
                 <a href="#projects" class="btn btn-primary">Project Showcase</a>
@@ -268,7 +263,7 @@
             <div class="showcase-grid">
                 <div class="showcase-box">
                     <img src="ehr-audit-raw-data.png" alt="Raw Data Entry" onerror="this.src='https://via.placeholder.com/600x400?text=Raw+Data+View+Screenshot';">
-                    <div class="img-overlay">1. Raw Data Entry & Entry Validation</div>
+                    <div class="img-overlay">1. Raw Data & Validation Thresholds</div>
                 </div>
                 <div class="showcase-box">
                     <img src="ehr-audit-formula-view.png" alt="Formula Logic" onerror="this.src='https://via.placeholder.com/600x400?text=Formula+Logic+Screenshot';">
@@ -290,95 +285,58 @@
             <div class="edu-card reveal">
                 <h4>M.S. in Data Analytics</h4>
                 <span class="edu-status">Western Governors University | In Progress</span>
-                <p style="font-size: 0.85rem; color: var(--medium-gray);">Focusing on Predictive Modeling, Python/SQL for Healthcare, and Statistical Analysis for Clinical Outcomes.</p>
+                <p style="font-size: 0.85rem; color: var(--medium-gray);">Specializing in Predictive Modeling, Python/SQL, and Statistical Analysis for Clinical Outcomes.</p>
             </div>
             <div class="edu-card reveal">
                 <h4>B.S. in Kinesiology</h4>
                 <span class="edu-status">Oregon State University | 2024</span>
-                <p style="font-size: 0.85rem; color: var(--medium-gray);">Coursework in Biomechanics, Statistics for Health Sciences, and Human Physiology.</p>
+                <p style="font-size: 0.85rem; color: var(--medium-gray);">Concentration in Biomechanics, Statistics for Health Sciences, and Clinical Physiology.</p>
             </div>
         </div>
 
         <div class="cert-grid reveal">
-            <div class="cert-item">
-                <i class="fas fa-user-shield"></i>
-                <p style="font-weight: 700; font-size: 0.9rem;">CompTIA Security+</p>
-            </div>
-            <div class="cert-item">
-                <i class="fas fa-heartbeat"></i>
-                <p style="font-weight: 700; font-size: 0.9rem;">Certified EKG Tech</p>
-            </div>
-            <div class="cert-item">
-                <i class="fas fa-dumbbell"></i>
-                <p style="font-weight: 700; font-size: 0.9rem;">NASM CPT</p>
-            </div>
-            <div class="cert-item">
-                <i class="fas fa-notes-medical"></i>
-                <p style="font-weight: 700; font-size: 0.9rem;">CPR/AED Certified</p>
-            </div>
+            <div class="cert-item"><i class="fas fa-user-shield"></i><p style="font-weight: 700;">CompTIA Security+</p></div>
+            <div class="cert-item"><i class="fas fa-heartbeat"></i><p style="font-weight: 700;">Certified EKG Tech</p></div>
+            <div class="cert-item"><i class="fas fa-dumbbell"></i><p style="font-weight: 700;">NASM CPT</p></div>
+            <div class="cert-item"><i class="fas fa-notes-medical"></i><p style="font-weight: 700;">CPR/AED Certified</p></div>
         </div>
     </section>
 
-    <footer>
-        <div class="footer-socials">
-            <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="mailto:emat152@outlook.com"><i class="fas fa-envelope"></i></a>
+    <footer style="background: var(--navy); color: white; padding: 60px 10% 20px; text-align: center;">
+        <div style="margin-bottom: 30px;">
+            <a href="https://linkedin.com" target="_blank" style="color:white; font-size: 2rem; margin:0 15px;"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:emat152@outlook.com" style="color:white; font-size: 2rem; margin:0 15px;"><i class="fas fa-envelope"></i></a>
         </div>
-        <p style="margin: 25px 0;">Buckeye, AZ | (808) 429-6419 | emat152@outlook.com</p>
-        <p style="font-size: 0.7rem; opacity: 0.4;">&copy; 2026 Elizabeth Matallana. All Rights Reserved.</p>
+        <p>Buckeye, AZ | (808) 429-6419</p>
+        <p style="font-size: 0.7rem; opacity: 0.4; margin-top: 20px;">&copy; 2026 Elizabeth Matallana. All Rights Reserved.</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        /* Particles */
         particlesJS("particles-js", { "particles": { "number": { "value": 60 }, "color": { "value": "#ffffff" }, "opacity": { "value": 0.2 }, "size": { "value": 3 }, "line_linked": { "enable": true, "opacity": 0.1 }, "move": { "speed": 1 } } });
 
-        /* Typewriter Title cycling */
-        const typewriterElement = document.getElementById('typewriter');
         const titles = ["Healthcare Data Analyst", "Data Quality Specialist", "Clinical Informatics Auditor"];
-        let titleIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-
+        let titleIdx = 0, charIdx = 0, isDeleting = false;
         function type() {
-            const currentTitle = titles[titleIndex];
-            if (isDeleting) {
-                typewriterElement.textContent = currentTitle.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                typewriterElement.textContent = currentTitle.substring(0, charIndex + 1);
-                charIndex++;
-            }
-
-            if (!isDeleting && charIndex === currentTitle.length) {
-                isDeleting = true;
-                setTimeout(type, 2000);
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                titleIndex = (titleIndex + 1) % titles.length;
-                setTimeout(type, 500);
-            } else {
-                setTimeout(type, isDeleting ? 50 : 100);
-            }
+            const current = titles[titleIdx];
+            document.getElementById('typewriter').textContent = isDeleting ? current.substring(0, charIdx--) : current.substring(0, charIdx++);
+            if (!isDeleting && charIdx > current.length) { isDeleting = true; setTimeout(type, 2000); }
+            else if (isDeleting && charIdx === 0) { isDeleting = false; titleIdx = (titleIdx + 1) % titles.length; setTimeout(type, 500); }
+            else setTimeout(type, isDeleting ? 50 : 100);
         }
         type();
 
-        /* Scroll Logic */
         window.onscroll = function() {
             const nav = document.getElementById("navbar");
             if (window.pageYOffset > 50) nav.classList.add("scrolled");
             else nav.classList.remove("scrolled");
-            
             document.querySelectorAll('.reveal').forEach(el => {
                 if (el.getBoundingClientRect().top < window.innerHeight - 50) el.classList.add('active');
             });
         };
 
-        /* Dark Mode Toggle */
         document.getElementById("dark-mode-toggle").onclick = function() {
             document.body.classList.toggle("dark-mode");
-            this.querySelector("i").classList.toggle("fa-moon");
-            this.querySelector("i").classList.toggle("fa-sun");
         };
     </script>
 </body>
